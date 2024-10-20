@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg custom-navbar " data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand ms-5" href="#" >AskPupkin </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class=" collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex" role="search">
+            <input class="form-control ms-5" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-custom ms-3" type="submit">Search</button>
+          </form>
+        </div>
+        <nav class="navbar bg-body-tertiary p-2">
+          <div class="d-flex gap-3 align-items-center pe-4">
+            <img src="../static/images/dog.png" alt="Bootstrap" width="50" height="50" class="me-2">
+            <div>
+              <div>
+                <h4 >Good_boy_4572</h4>
+            </div>
+            <a href="#" class="text-primary ">Settings</a>
+            <span  class="sep"></span>
+            <a href="#" class="text-primary">Log out</a>
+        </div>
+        </nav>
+      </div>
+    </nav>
+
+    <main class="container mt-3">
+      <div class="d-flex gap-3 align-items-center">
+          <h1>Log in</h1>
+      </div>
+    
+      <div class="row">
+        <div class="col-12 col-md-8">
+          <div class="d-flex flex-column gap-3">
+    
+            <div class="row m-2">
+              <div class="col-2">
+                <h3>Login</h3>
+              </div>
+              <div class="col">
+                <div class="form-floating mb-2">
+                  <input type="text" class="form-control is-valid" id="loginInput" placeholder="Your login" required>
+                  <div class="invalid-feedback">Please enter login</div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="row m-2">
+              <div class="col-2">
+                <h3>Password</h3>
+              </div>
+              <div class="col">
+                <div class="form-floating mb-2">
+                  <input type="password" class="form-control is-valid" id="passwordInput" placeholder="Your password" required>
+                  <div class="invalid-feedback">Please enter password</div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="form-floating mx-5">
+              <button class="btn btn-custom m-2 p-3" type="submit">Login</button>
+            </div>
+            <div class="form-floating mx-5">
+              <a href="#">Create new account!</a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-12 col-md-4">
+          <section class="mb-3">
+            <h2>Popular tags</h2>
+            <span href="#" class="badge text-bg-primary m-2">Perl</span>
+            <span href="#" class="badge text-bg-warning m-2">python</span>
+            <span href="#" class="badge text-bg-success m-2">TechnoPark</span>
+            <span href="#" class="badge text-bg-danger m-2">MySQL</span>
+            <span href="#" class="badge text-bg-dark m-2">django</span>
+            <span href="#" class="badge text-bg-info m-2">Mail.ru</span>
+            <span href="#" class="badge text-bg-dark m-2">Voloshin</span>
+            <span href="#" class="badge text-bg-warning m-2">Firefox</span>
+          </section>
+          <section class="p-3">
+            <h2>Best members</h2>
+            <li class="list-group-item pb-1"><a href="#">Mr. House</a></li>
+            <li class="list-group-item pb-1"><a href="#">General_Kenobi</a></li>
+            <li class="list-group-item pb-1"><a href="#">Bold_one</a></li>
+            <li class="list-group-item pb-1"><a href="#">Kostritskiy</a></li>
+            <li class="list-group-item pb-1"><a href="#">Someone</a></li>
+            <li class="list-group-item pb-1"><a href="#">That_one_guy</a></li>
+          </section>
+        </div>
+      </div>
+    </main>
+    
+    <footer class="bg-body-tertiary text-center text-lg-start">
+      <div class=" custom-navbartext-center p-3 ">
+        © 2024 Copyright:
+        <a class="text-body" href="https://github.com/Neratus/">Neratus</a>
+      </div>
+  </footer>
+    
+    <script src="../static/js/bootstrap.min.js"></script>
+  </body>
+</html>
