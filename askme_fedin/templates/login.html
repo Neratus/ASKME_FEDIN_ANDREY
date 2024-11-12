@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-12 col-md-8">
+    <div class="d-flex flex-column gap-3">
+
+      <h1>Log in</h1>
+        <div class="row mb-4 mt-3">
+            <div class="col">
+                <h3>Login</h3>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control is-valid" id="loginInput" style="width: 400px;" placeholder="Your login" required>
+                <div class="invalid-feedback">Please enter login</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3>Password</h3>
+            </div>
+            <div class="col">
+                <input type="password" class="form-control is-valid" id="passwordInput" style="width: 400px;" placeholder="Your password" required>
+                <div class="invalid-feedback ">Please enter password</div>
+            </div>
+        </div>
+
+        <div class="form-floating">
+            <button class="btn btn-custom mt-3 p-3" type="submit">Login</button>
+        </div>
+        <div class="form-floating">
+            <a href="#">Create new account!</a>
+        </div>
+        </div>
+</div>
+
+{% endblock %}
+

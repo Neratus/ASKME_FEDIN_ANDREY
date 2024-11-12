@@ -1,0 +1,33 @@
+{% load static %}
+<div class="card w-100">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-2">
+        <div class="border mb-2">
+          <img src="{% static 'images/profile.png' %}" alt="Avatar" class="img-fluid" height="40">
+        </div>
+        <div class="d-flex align-items-center">
+          <img class="mx-2" src="{% static 'images/upvote.png' %}" alt="upvote" height="30">
+          <h4 class="mx-2 mb-0">{{ question.like_count }}</h4>
+          <img class="mx-2" src="{% static 'images/downvote.png' %}" alt="downvote" height="30">
+        </div>
+      </div>
+      <div class="col-9">
+        <span class="h3">
+          <a href="{% url 'one_question' question.id %}" class="card-link">{{ question.title }}</a>
+        </span>
+        <p class="card-text h5 mt-2">{{ question.text }}</p>
+        <div class="d-flex gap-5 mt-4">
+          <a href="{% url 'one_question' question.id %}" class="card-link">Answer {{ question.answer_count }}</a>
+          <div>
+            {% for tag in question.tags.all %}
+            <span class="h6  ms-3">
+              <a href="{% url 'tag' tag %}">{{ tag.name }}</a>
+            </span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

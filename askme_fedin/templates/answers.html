@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="question-details">
+        {% include 'layouts/one_question.html' %}
+    </div>
+    <div class="answers mt-5">
+        <h3>Answers:</h3>
+        {% if page_obj.object_list %}
+            {% for answer in page_obj.object_list %}
+                <div class="answer mt-3">
+                    {% include 'layouts/question_answers.html' %}
+                </div>
+            {% endfor %}
+            {% include 'layouts/pagination.html' %}
+        {% else %}
+            <p>No answers yet.</p>
+        {% endif %}
+    </div>
+{% endblock %}
