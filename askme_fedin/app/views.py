@@ -4,24 +4,6 @@ from django.shortcuts import render,get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Profile,Tag,Question,Answer,QuestionLike, AnswerLike
 
-QUESTIONS = [
-   {
-        'title': f'Totally real person #{i}',
-        'id': i,
-        'text': f'I am person #{i} and I love communism. I dont know how to tell ny crush but I really like it ',
-        'tags': [f'tag{i % 5}', f'tag{i % 3}',  f'tag{i % 10}'],
-        'like': random.randint(-20, 100),
-        'answers_cnt': 4,
-        'answers': [
-            {
-                'text': f'I am answer #{j} to question #{i} and I understand you',
-                'answer_like': random.randint(0, 20)  
-            }
-            for j in range(0, 4)
-        ]
-   } for i in range(0,50)
-]
-
 
 def paginate(objects_list, request, per_page=10):
     page_num = request.GET.get('page', 1)
@@ -54,7 +36,7 @@ def tag(request, tag_name):
 
 def one_question(request, question_id):
     question = get_object_or_404(Question, id=question_id)
-    answers = Answer.objects.answers()
+    answers = Answer.objects.filter(question=question)
     page = paginate(answers, request, per_page=3)  
     return render(request, 'answers.html', context={'question': question,'likes': Question.objects.like_count(question), 'page_obj': page, "answers": answers})
 

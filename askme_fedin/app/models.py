@@ -13,7 +13,7 @@ class QuestionManager(models.Manager):
         return self.annotate(like_count=Count('questionlike')).order_by('-like_count', '-created_at')
     
     def get_tags(self, tag):
-        return self.annotate(like_count=Count('questionlike')).filter(tags = tag).order_by('-created_at')
+        return self.annotate(like_count=Count('questionlike')).filter(tags__name = tag).order_by('-created_at')
 
 class AnswerManager(models.Manager):
     def answers(self):
@@ -60,6 +60,10 @@ class Answer(models.Model):
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     objects = AnswerManager()
+
+    @property
+    def like_count(self):
+        return AnswerLike.objects.filter(answer=self).count()
 
     def __str__(self):
         return f'Answer by {self.author.user.username} to {self.question.title}'
