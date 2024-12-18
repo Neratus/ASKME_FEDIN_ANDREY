@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app import views
+from django.conf.urls.static import static
+
+from askme_fedin import settings
 
 urlpatterns = [
     path('', views.index, name = 'index'),
@@ -27,4 +30,12 @@ urlpatterns = [
     path('tags/<str:tag_name>', views.tag, name = 'tag'),
     path('question/<int:question_id>', views.one_question, name = 'one_question'),
     path('admin/', admin.site.urls),
+    path('logout/', views.logout, name='logout'),
+    path('profile/edit/', views.settings, name = 'settings'),
+    path('like_or_dislike/', views.like_or_dislike, name = 'like_or_dislike'),
+    path('like_or_dislike_answer/', views.like_or_dislike_answer, name = 'like_or_dislike_answer'),
+    path('mark_correct_answer/', views.mark_correct_answer, name='mark_correct_answer'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

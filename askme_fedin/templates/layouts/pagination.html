@@ -1,5 +1,5 @@
 <nav aria-label="navigation">
-    <ul class="pagination">
+    <ul class="pagination" style="margin-bottom: 10px; margin-top: 10px;">
         {% if page_obj.has_previous %}
             <li class="page-item {% if page_obj.number == 1 %}active{% endif %}">
                 <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="First">

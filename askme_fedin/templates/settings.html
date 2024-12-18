@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<div class="col-12 col-md-8">
+    <div class="d-flex flex-column gap-3">
+        <h1>Edit Profile</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+
+            <label for="current-avatar" class="form-label">Current Avatar</label>
+                <div id="current-avatar" class="mb-3">
+                        {% if user_profile.avatar %}
+                            <img src="{{ user_profile.avatar.url }}" alt="Avatar" class="img-fluid" width="300" height="300">
+                        {% else %}
+                            <img src="/media/profile.png" alt="Default Avatar" class="img-fluid" width="300" height="300">
+                        {% endif %}
+                </div>
+
+            <button class="btn btn-custom mt-3 p-3" type="submit">Save Changes</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

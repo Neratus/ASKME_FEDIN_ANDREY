@@ -12,9 +12,51 @@
                     {% include 'layouts/question_answers.html' %}
                 </div>
             {% endfor %}
+            <div class="add-answer-form mt-4">
+                <h4>Your Answer:</h4>
+                <form method="post" action="{% url 'one_question' question.id %}" id="answer-form">
+                    {% csrf_token %}
+                    <div class="col">
+                        <div class="form-floating mb-2">
+                            {{ form.text }}
+                            {% if form.text.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.text.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;">Add Answer</button>
+                </form>
+            </div>
             {% include 'layouts/pagination.html' %}
         {% else %}
             <p>No answers yet.</p>
+            <div class="add-answer-form mt-4">
+                <h4>Your Answer:</h4>
+                <form method="post" action="{% url 'one_question' question.id %}" id="answer-form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Add Answer</button>
+                </form>
+            </div>
         {% endif %}
     </div>
+
+    <script>
+        window.LIKE_OR_DISLIKE_URL_ANS = "{% url 'like_or_dislike_answer' %}";
+        window.LIKE_OR_DISLIKE_URL = "{% url 'like_or_dislike' %}";
+        window.MARK_CORRECT_ANSWER_URL = "{% url 'mark_correct_answer' %}";
+        window.CSRF_TOKEN = "{{ csrf_token }}";
+        window.user_is_authenticated = "{{ user.is_authenticated }}";
+        window.questionID = "{{ question.id }}"
+        window.UPVOTE_IMG_SRC = '{% static "images/upvote_active.png" %}';
+        window.DOWNVOTE_IMG_SRC = '{% static "images/downvote_active.png" %}';
+        window.UPVOTE_IN_IMG_SRC = '{% static "images/upvote.png" %}';
+        window.DOWNVOTE_IN_IMG_SRC = '{% static "images/downvote.png" %}';
+      </script>
+      
+      <script src="{% static 'js/answers.js' %}"></script>
 {% endblock %}

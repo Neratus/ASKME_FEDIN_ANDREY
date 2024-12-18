@@ -22,18 +22,31 @@
           <input class="form-control ms-5" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-custom ms-3" type="submit">Search</button>
         </form>
+        <form class="d-flex p-2" action="{% url 'ask' %}">
+          <button class="btn btn-custom ms-5">ASK!</button>
+        </form>
       </div>
       <nav class="navbar bg-body-tertiary p-2">
         <div class="d-flex gap-3 align-items-center pe-4">
-          <img src="{% static 'images/dog.png' %}" alt="Bootstrap" width="50" height="50" class="me-2">
+          {% if user.is_authenticated %}
+          {% if user_profile.avatar %}
+            <img src="{{ user_profile.avatar.url }}" alt="Avatar" class="img-fluid" width="80" height="80">
+          {% else %}
+            <img src="/media/profile.png" alt="Default Avatar" class="img-fluid" width="80" height="80">
+          {% endif %}
           <div>
             <div>
-              <h4>Good_boy_4572</h4>
+              <h4>{{ user_profile.user.username }}</h4>
             </div>
-            <a href="#" class="text-primary ">Settings</a>
+            <a href="{% url 'settings' %}" class="text-primary ">Settings</a>
             <span class="sep"></span>
-            <a href="#" class="text-primary">Log out</a>
+            <a href="{% url 'logout' %}" class="text-primary">Log out</a>
           </div>
+          {% else %}
+            <a href="{% url 'login' %}" class="text-primary">Log in</a>
+            <span class="sep"></span>
+            <a href="{% url 'signup' %}" class="text-primary">Sign up</a>
+          {% endif %}
       </nav>
     </div>
   </nav>

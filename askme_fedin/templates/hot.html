@@ -12,4 +12,16 @@
   {% endfor %}
   {% include 'layouts/pagination.html' %}
 </div>
+
+<script>
+  window.LIKE_OR_DISLIKE_URL = "{% url 'like_or_dislike' %}";
+  window.CSRF_TOKEN = "{{ csrf_token }}";
+  window.UPVOTE_IMG_SRC = '{% static "images/upvote_active.png" %}';
+  window.DOWNVOTE_IMG_SRC = '{% static "images/downvote_active.png" %}';
+  window.UPVOTE_IN_IMG_SRC = '{% static "images/upvote.png" %}';
+  window.DOWNVOTE_IN_IMG_SRC = '{% static "images/downvote.png" %}';
+</script>
+
+<script src="{% static 'js/questions.js' %}"></script>
+
 {% endblock %}
